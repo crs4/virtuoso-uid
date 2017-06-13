@@ -26,7 +26,7 @@ ID.create().then((id)=>{
 
 #### `create()`
 Create an unused IRI.
-Returns a Promise
+Return a Promise
 
 #### `config(opts)`
 Set the options
