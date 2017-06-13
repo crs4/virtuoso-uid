@@ -1,0 +1,69 @@
+{
+  "name": "virtuoso-uid",
+  "version": "1.0.0",
+  "description": "Generate customizable and unique IDs for Virtuoso",
+  "main": "index.js",
+  "dependencies": {
+    "virtuoso-sparql-client": "^0.0.4"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crs4/virtuoso-uid.git"
+  },
+  "keywords": [
+    "ID",
+    "generator",
+    "unique",
+    "tripplestore",
+    "virtuoso"
+  ],
+  "author": {
+    "name": "Ivan Marcialis",
+    "email": "ivan@crs4.it",
+    "url": "http://www.crs4.it/it/peopledetails/73/ivan-marcialis/"
+  },
+  "contributors": [
+    {
+      "name": "Stedano Fadda",
+      "email": "stefano@crs4.it",
+      "url": "http://www.crs4.it/peopledetails/432/stefano-salvatore-fadda/"
+    },
+    {
+      "name": "Alberto Farci",
+      "email": "farci@crs4.it",
+      "url": "http://www.crs4.it/peopledetails/430/alberto-farci/"
+    },
+    {
+      "name": "Gianluca Malagnini",
+      "email": "gianluca@crs4.it",
+      "url": "http://www.crs4.it/peopledetails/431/gian-luca-malagnini/"
+    },
+    {
+      "name": "Emanuela De Vita",
+      "email": "emy@crs4.it",
+      "url": "http://www.crs4.it/peopledetails/65/emanuela-de-vita/"
+    }
+  ],
+  "maintainers": [
+    {
+      "name": "albertofarci",
+      "email": "farci@crs4.it"
+    },
+    {
+      "name": "gianlucam",
+      "email": "gianluca@crs4.it"
+    },
+    {
+      "name": "ivanmarcialis",
+      "email": "ivan@crs4.it"
+    },
+    {
+      "name": "stefanofadda",
+      "email": "stefanofaddajob@gmail.com"
+    }
+  ],
+
+  "license": "MIT",
+
+}
