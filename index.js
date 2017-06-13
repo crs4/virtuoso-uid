@@ -6,6 +6,7 @@ let config = null;
 
 let defaults = {
   endpoint: null,
+  graph: null,
   prefix: null,
   alphabet : '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
   length : 5
@@ -29,8 +30,10 @@ exports.create = () => {
     .then((result)=>{
       if(result.boolean)
         exports.create();
-      else
+      else{
+        insert(iri);
         return resolve(iri);
+      }
     })
     .catch(reject);
   });
@@ -44,6 +47,12 @@ let verify = (iri) => {
   return Client.query(query);
 }
 
+let insert = (iri) => {
+  let query = `WITH <${config.graph}>
+    INSERT {<${iri}> <http://purl.org/dc/terms/created> "${new Date().toISOString()}"^^xsd:dateTimeStamp  }
+  `;
+  return Client.query(query);
+}
 
 let generate = ()=>{
   let rtn = '';

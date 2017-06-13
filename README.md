@@ -1,7 +1,7 @@
 Virtuoso unique ID generator for Node.js
 =============================================
 ## Description
-This module allows to create unique ID for resources stored on Virtuoso. It creates a random code and adds it to a certain prefix and verifies if the this IRI is already used.
+This module allows to create unique ID for resources stored on Virtuoso. It creates a random code and adds it to a certain prefix and verifies if this IRI is already used.
 
 ## Install
 ```
@@ -25,15 +25,16 @@ ID.create().then((id)=>{
 ## Methods
 
 #### `create()`
-Create an unused IRI.
-Return a Promise
+Create an unused IRI and store the new triple: <iri> <dcterms:created> date^^xsd:dateTimeStamp.
+Return a Promise with the new IRI.
 
 #### `config(opts)`
 Set the options
 
 ```js
 let opts = {
-  endpoint: 'http://dbpedia.org/sparql', // Virtuoso SPARQL endpoint
+  endpoint: 'http://dbpedia.org/sparql',  // Virtuoso SPARQL endpoint
+  graph: 'http://wwwexample.org/myGraph', // The graph where insert the new ID
   prefix: 'http://dbpedia.org/resource/', // The prefix
   alphabet : 'abcdeABCDE', // The set of chars used to create the code
   length : 10 // the code length
