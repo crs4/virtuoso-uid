@@ -14,6 +14,7 @@ const ID = require("virtuoso-uid");
 
 ID.config({
   endpoint: 'http://dbpedia.org/sparql',
+  graph: 'http://www.example.org/myGraph'
   prefix: 'http://dbpedia.org/resource/'
 });
 
@@ -40,7 +41,7 @@ Set the options
 ```js
 let opts = {
   endpoint: 'http://dbpedia.org/sparql',  // Virtuoso SPARQL endpoint
-  graph: 'http://wwwexample.org/myGraph', // The graph where insert the new ID
+  graph: 'http://www.example.org/myGraph', // The graph where insert the new ID
   prefix: 'http://dbpedia.org/resource/', // The prefix
   alphabet : 'abcdeABCDE', // The set of chars used to create the code
   idLength : 10 // the code length

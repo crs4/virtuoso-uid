@@ -4,7 +4,7 @@
   "description": "Generate customizable and unique IDs for Virtuoso",
   "main": "index.js",
   "dependencies": {
-    "virtuoso-sparql-client": "^0.0.4"
+    "virtuoso-sparql-client": "*"
   },
   "devDependencies": {},
   "repository": {
