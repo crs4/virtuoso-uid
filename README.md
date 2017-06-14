@@ -37,7 +37,7 @@ let opts = {
   graph: 'http://wwwexample.org/myGraph', // The graph where insert the new ID
   prefix: 'http://dbpedia.org/resource/', // The prefix
   alphabet : 'abcdeABCDE', // The set of chars used to create the code
-  length : 10 // the code length
+  idLength : 10 // the code length
 }
 ```
 
@@ -45,6 +45,7 @@ Default values are:
 ```js
 let defaults = {
   endpoint: null,
+  graph: null,
   prefix: null,
   alphabet : '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
   length : 5
