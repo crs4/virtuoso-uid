@@ -1,6 +1,6 @@
 {
   "name": "virtuoso-uid",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Generate customizable and unique IDs for Virtuoso",
   "main": "index.js",
   "dependencies": {
