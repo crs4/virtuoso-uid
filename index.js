@@ -41,7 +41,7 @@ exports.create = () => {
 }
 
 let verify = (iri) => {
-  let query = `ASK {
+  let query = `ASK FROM <${config.graph}> {
     { <${iri}> ?a ?b } UNION {?c ?d <${iri}>} UNION {?e <${iri}> ?f}
   }`;
   return Client.query(query);
