@@ -28,6 +28,12 @@ ID.create().then((id)=>{
 Create an unused IRI and store the new triple: <iri> <dcterms:created> date^^xsd:dateTimeStamp.
 Return a Promise with the new IRI.
 
+#### `bulkCreate(count, millis)`
+Create N unused IRI and store the new triple: <iri> <dcterms:created> date^^xsd:dateTimeStamp.
+Return a Promise with an array of new IRIs.
+  `count` the number of IRI to create
+  `millis` the request timeout
+
 #### `config(opts)`
 Set the options
 

@@ -19,7 +19,8 @@ exports.config = (options) => {
 
 
   let prefixes = {
-    dcterms : "http://purl.org/dc/terms/"
+    dcterms : "http://purl.org/dc/terms/",
+    ex : "http://www.example.org/",
   };
   Client = new SPARQL.Client(config.endpoint);
   Client.setOptions("application/json", prefixes, config.graph);
@@ -34,23 +35,42 @@ exports.create = () => {
       if(result.boolean)
         exports.create();
       else{
-        insert(iri);
-        return resolve(iri);
+        return insert(iri);
       }
     })
-    .catch((error)=>{
-      console.log("virtuoso-uid", error);
-    });
+    .then(()=>{
+      return resolve(iri);
+    })
+    .catch(reject);
   });
+}
 
+exports.bulkCreate = (count, millis) => {
+  errororMissingConfiguration();
+  return new Promise((resolve, reject) => {
+    let IRIs = [];
+    for(let i = 0; i < count; i++){
+      setTimeout(()=>{
+        exports.create()
+        .then((iri)=>{
+          IRIs.push(iri);
+          if(IRIs.length === count)
+            return resolve(IRIs);
+        })
+        .catch(reject);
+      }, i * millis);
+    }
+  });
 }
 
 let verify = (iri) => {
+
   let query = `ASK FROM <${config.graph}> {
     {<${iri}> ?a ?b}
     UNION {?e <${iri}> ?f}
     UNION {?c ?d <${iri}>}
   }`;
+  //console.log(query);
   return Client.query(query);
 }
 
@@ -58,6 +78,7 @@ let insert = (iri) => {
   let query = `WITH <${config.graph}> INSERT
     {<${iri}> dcterms:created "${new Date().toISOString()}"^^xsd:dateTimeStamp}
   `;
+  //console.log(query);
   return Client.query(query);
 }
 
