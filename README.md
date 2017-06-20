@@ -1,11 +1,15 @@
 Virtuoso unique ID generator for Node.js
 =============================================
 ## Description
-This module allows to create unique ID for resources stored on Virtuoso. It creates a random code and adds it to a certain prefix and verifies if this IRI is already used.
+This module allows to create unique ID for resources stored on Virtuoso.
+It creates a random code and adds it to a certain prefix and verifies if this IRI is already used, if not the module inserts a triple with:
+Subject : The new ID (prefix+code)
+Predicate : dcterms:created
+Object : The current date [new Date().toISOString()]
 
 ## Install
 ```
-npm install virtuoso-uid
+npm install [--save] virtuoso-uid
 ```
 
 ## Usage
@@ -14,29 +18,24 @@ const ID = require("virtuoso-uid");
 
 ID.config({
   endpoint: 'http://dbpedia.org/sparql',
-  graph: 'http://www.example.org/myGraph'
+  graph: 'http://www.example.org/myGraph',
   prefix: 'http://dbpedia.org/resource/'
 });
 
 ID.create().then((id)=>{
-  console.log(id); //X74a9
+  console.log(id);
 }).catch(console.log);
 ```
 
 ## Methods
 
-#### `create()`
-Create an unused IRI and store the new triple: <iri> <dcterms:created> date^^xsd:dateTimeStamp.
-Return a Promise with the new IRI.
-
-#### `bulkCreate(count, millis)`
-Create N unused IRI and store the new triple: <iri> <dcterms:created> date^^xsd:dateTimeStamp.
-Return a Promise with an array of new IRIs.
-  `count` the number of IRI to create
-  `millis` the request timeout
+#### `create([echo])`
+Creates an unused IRI and store the new triple: <iri> <dcterms:created> date^^xsd:dateTimeStamp.
+Returns a Promise that, when resolved, gives the complete result object.
+ - `echo` set to 'true' to print query in standard console, 'false' is the default value;
 
 #### `config(opts)`
-Set the options
+Sets the options
 
 ```js
 let opts = {
@@ -47,7 +46,6 @@ let opts = {
   idLength : 10 // the code length
 }
 ```
-
 Default values are:
 ```js
 let defaults = {

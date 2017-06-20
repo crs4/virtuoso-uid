@@ -1,4 +1,6 @@
-const {QueryNode, QueryString, QueryData, Triple, LocalTripleStore, Client} = require('virtuoso-sparql-client');
+const {Node, Data, Triple, Client} = require('virtuoso-sparql-client');
+
+
 
 let SaveClient = null;
 let config = null;
@@ -14,24 +16,27 @@ let defaults = {
 exports.config = (options) => {
   config = Object.assign({}, defaults, options);
   if(config.idLength < 1) config.idLength = 1;
-  if(!config.prefix) throw new Error("VirtuosoID: prefix is null");
+  if(!config.prefix) throw new Error("virtuoso-uid -> prefix can not be null");
 
   SaveClient = new Client(config.endpoint);
   SaveClient.setDefaultGraph(config.graph);
+  SaveClient.addPrefixes({
+    dcterms   : "http://purl.org/dc/terms/"
+  });
   SaveClient.setDefaultFormat('application/json');
 }
-
 exports.create = (echo = false) => {
   if(!config)
     throw new Error("virtuoso-uid -> Call 'config' before...");
-  //console.log(SaveClient._calculateQueryGraph());
+
   return new Promise((resolve, reject) => {
     let iri = config.prefix + generate();
     verify(iri, echo)
     .then((result)=>{
-      if(Boolean(result.boolean))
+      if(Boolean(result.boolean)) { // Already present, do again...
         exports.create(echo);
-      else{
+      }
+      else {
         return insert(iri, echo);
       }
     })
@@ -48,54 +53,21 @@ exports.create = (echo = false) => {
   });
 }
 
-/*
-exports.bulkCreate = (count, millis, echo = false) => {
-  errororMissingConfiguration();
-  return new Promise((resolve, reject) => {
-    let IRIs = [];
-    for(let i = 0; i < count; i++){
-      setTimeout(()=>{
-        exports.create(echo)
-        .then((iri)=>{
-          IRIs.push(iri);
-          if(IRIs.length === count)
-            return resolve(IRIs);
-        })
-        .catch((error)=>{
-          reject({
-            source: 'SaveClient-uid',
-            method: 'bulkCreate',
-            error: error
-          });
-        });
-      }, i * millis);
-    }
-  });
-}
-*/
-
 let verify = (iri, echo = false) => {
-
   let query = `ASK FROM <${config.graph}> {
-    {<${iri}> ?a ?b}
-    UNION {?e <${iri}> ?f}
-    UNION {?c ?d <${iri}>}
-  }`;
-  //console.log(query);
+        {<${iri}> ?a ?b}
+        UNION
+        {?e <${iri}> ?f}
+        UNION
+        {?c ?d <${iri}>}
+      }`;
 
   return SaveClient.query(query, echo);
 }
 let insert = (iri, echo = false) => {
-  let localStore = new LocalTripleStore();
-  localStore.add(
-    new Triple(
-      new QueryNode(iri),
-      "dcterms:created",
-      new QueryData(localStore.now(), "xsd:dateTimeStamp")
-    )
-  );
-
-  return SaveClient.store(localStore, echo);
+  let triple = new Triple(new Node(iri), "dcterms:created", new Data(SaveClient.getLocalStore().now(), "xsd:dateTimeStamp"));
+  SaveClient.getLocalStore().add(triple);
+  return SaveClient.store(echo);
 }
 let generate = () => {
   let rtn = '';
