@@ -1,16 +1,32 @@
 {
+  "name": "virtuoso-uid",
   "version": "1.0.6",
+  "description": "Generate customizable and unique IDs for Virtuoso",
+  "main": "index.js",
+  "dependencies": {
+    "virtuoso-sparql-client": "*"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crs4/virtuoso-uid.git"
+  },
+  "keywords": [
+    "ID",
+    "generator",
+    "unique",
+    "tripplestore",
+    "virtuoso"
+  ],
   "author": {
     "name": "Ivan Marcialis",
     "email": "ivan@crs4.it",
     "url": "http://www.crs4.it/it/peopledetails/73/ivan-marcialis/"
   },
-  "bugs": {
-    "url": "https://github.com/crs4/virtuoso-uid/issues"
-  },
   "contributors": [
     {
-      "name": "Stefano Fadda",
+      "name": "Stedano Fadda",
       "email": "stefano@crs4.it",
       "url": "http://www.crs4.it/peopledetails/432/stefano-salvatore-fadda/"
     },
@@ -30,34 +46,28 @@
       "url": "http://www.crs4.it/peopledetails/65/emanuela-de-vita/"
     }
   ],
-  "dependencies": {
-    "virtuoso-sparql-client": "*"
-  },
-  "description": "Generate customizable and unique IDs for Virtuoso",
-  "devDependencies": {},
-  "directories": {},
-  "homepage": "https://github.com/crs4/virtuoso-uid#readme",
-  "keywords": [
-    "ID",
-    "generator",
-    "unique",
-    "tripplestore",
-    "virtuoso"
-  ],
-  "license": "MIT",
-  "main": "index.js",
   "maintainers": [
+    {
+      "name": "albertofarci",
+      "email": "farci@crs4.it"
+    },
+    {
+      "name": "gianlucam",
+      "email": "gianluca@crs4.it"
+    },
     {
       "name": "ivanmarcialis",
       "email": "ivan@crs4.it"
+    },
+    {
+      "name": "stefanofadda",
+      "email": "stefanofaddajob@gmail.com"
     }
   ],
-  "name": "virtuoso-uid",
-  "optionalDependencies": {},
-  "readme": "ERROR: No README data found!",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/crs4/virtuoso-uid.git"
+  "bugs": {
+    "url": "https://github.com/crs4/virtuoso-uid/issues"
   },
-  "scripts": {}
+  "directories": {},
+  "homepage": "https://github.com/crs4/virtuoso-uid#readme",
+  "license": "MIT"
 }
