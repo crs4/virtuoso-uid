@@ -1,51 +1,5 @@
 {
-  "_args": [
-    [
-      {
-        "raw": "virtuoso-uid@1.0.5",
-        "scope": null,
-        "escapedName": "virtuoso-uid",
-        "name": "virtuoso-uid",
-        "rawSpec": "1.0.5",
-        "spec": "1.0.5",
-        "type": "version"
-      },
-      "/Users/ivan/Code/dataextractor"
-    ]
-  ],
-  "_from": "virtuoso-uid@1.0.5",
-  "_id": "virtuoso-uid@1.0.5",
-  "_inCache": true,
-  "_location": "/virtuoso-uid",
-  "_nodeVersion": "7.0.0",
-  "_npmOperationalInternal": {
-    "host": "s3://npm-registry-packages",
-    "tmp": "tmp/virtuoso-uid-1.0.5.tgz_1497458616690_0.31503426074050367"
-  },
-  "_npmUser": {
-    "name": "ivanmarcialis",
-    "email": "ivan@crs4.it"
-  },
-  "_npmVersion": "3.10.8",
-  "_phantomChildren": {},
-  "_requested": {
-    "raw": "virtuoso-uid@1.0.5",
-    "scope": null,
-    "escapedName": "virtuoso-uid",
-    "name": "virtuoso-uid",
-    "rawSpec": "1.0.5",
-    "spec": "1.0.5",
-    "type": "version"
-  },
-  "_requiredBy": [
-    "#USER",
-    "/"
-  ],
-  "_resolved": "https://registry.npmjs.org/virtuoso-uid/-/virtuoso-uid-1.0.5.tgz",
-  "_shasum": "07a1842132b0d7281ee19af1e2ffcf56bfe22a70",
-  "_shrinkwrap": null,
-  "_spec": "virtuoso-uid@1.0.5",
-  "_where": "/Users/ivan/Code/dataextractor",
+  "version": "1.0.6",
   "author": {
     "name": "Ivan Marcialis",
     "email": "ivan@crs4.it",
@@ -56,7 +10,7 @@
   },
   "contributors": [
     {
-      "name": "Stedano Fadda",
+      "name": "Stefano Fadda",
       "email": "stefano@crs4.it",
       "url": "http://www.crs4.it/peopledetails/432/stefano-salvatore-fadda/"
     },
@@ -82,11 +36,6 @@
   "description": "Generate customizable and unique IDs for Virtuoso",
   "devDependencies": {},
   "directories": {},
-  "dist": {
-    "shasum": "07a1842132b0d7281ee19af1e2ffcf56bfe22a70",
-    "tarball": "https://registry.npmjs.org/virtuoso-uid/-/virtuoso-uid-1.0.5.tgz"
-  },
-  "gitHead": "83c867592856eef2fb9581a1cd3f0deca3c46b57",
   "homepage": "https://github.com/crs4/virtuoso-uid#readme",
   "keywords": [
     "ID",
@@ -110,6 +59,5 @@
     "type": "git",
     "url": "git+https://github.com/crs4/virtuoso-uid.git"
   },
-  "scripts": {},
-  "version": "1.0.5"
+  "scripts": {}
 }
