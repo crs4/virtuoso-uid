@@ -65,7 +65,7 @@ let verify = (iri, echo = false) => {
   return SaveClient.query(query, echo);
 }
 let insert = (iri, echo = false) => {
-  let triple = new Triple(new Node(iri), "dcterms:created", new Data(SaveClient.getLocalStore().now(), "xsd:dateTimeStamp"));
+  let triple = new Triple(new Node(iri), "dcterms:created", new Data(SaveClient.getLocalStore().now, "xsd:dateTimeStamp"));
   SaveClient.getLocalStore().add(triple);
   return SaveClient.store(echo);
 }
